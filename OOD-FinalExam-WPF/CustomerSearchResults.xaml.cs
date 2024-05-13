@@ -25,12 +25,14 @@ namespace OOD_FinalExam_WPF
         }
 
         /// <summary>
-        /// Close window after button is clicked
+        /// Show confirmation and close window after button is clicked
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void Button_Click(object sender, RoutedEventArgs e)
         {
+            Confirmation win = new Confirmation();
+            win.ShowDialog();
             this.Close();
         }
 
