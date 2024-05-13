@@ -15,5 +15,9 @@ namespace OOD_FinalExam_WPF
         public int BookingId { get; set; }
         public DateTime BookingsDate { get; set; }
         public int NumberOfParticipants { get; set; }
+
+        // Customer FK & connection
+        public int CustomerId { get; set; }
+        public virtual Customer Customer { get; set; }
     }
 }
