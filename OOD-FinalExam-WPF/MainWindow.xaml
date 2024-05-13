@@ -35,10 +35,10 @@
                 </Style>
             </StackPanel.Resources>
             <DatePicker Name="dpSearch"/>
-            <TextBox Name="tbxNoOfCustomers" Text="Number of customers"/>
-            <TextBox Name="tbxName" Text="Customer Name"/>
-            <TextBox Name="tbxContact" Text="Contact Number"/>
-            <Button Name="btnSearch" Content="Customer Search"/>
+            <TextBox Name="tbxNoOfCustomers" Text="Number of customers" GotFocus="tbxNoOfCustomers_GotFocus"/>
+            <TextBox Name="tbxName" Text="Customer Name" GotFocus="tbxName_GotFocus"/>
+            <TextBox Name="tbxContact" Text="Contact Number" GotFocus="tbxContact_GotFocus"/>
+            <Button Name="btnSearch" Content="Customer Search" Click="btnSearch_Click"/>
         </StackPanel>
         <Grid Grid.Row="2" Grid.ColumnSpan="3">
             <Grid.RowDefinitions>

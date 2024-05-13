@@ -1,0 +1,39 @@
+﻿<Window x:Class="OOD_FinalExam_WPF.CustomerSearchResults"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:OOD_FinalExam_WPF"
+        mc:Ignorable="d"
+        Title="CustomerSearchResults" Height="450" Width="800">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="4*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <TextBlock Text="Matching Customers" VerticalAlignment="Bottom" FontSize="24" Padding="10, 0, 0, 10"/>
+        <TextBlock Text="Create New Customer" Grid.Column="1" VerticalAlignment="Bottom" FontSize="24" Padding="10, 0, 0, 10"/>
+        <ListBox Name="lbxMatches" Grid.Row="1" Margin="10, 10, 10, 10" SelectionChanged="lbxMatches_SelectionChanged"/>
+        <StackPanel Grid.Row="1" Grid.Column="1" HorizontalAlignment="Center">
+            <StackPanel.Resources>
+                <Style TargetType="{x:Type TextBox}">
+                    <Setter Property="Margin" Value="0, 20, 0, 0"/>
+                    <Setter Property="Padding" Value="0, 0, 200, 0"/>
+                </Style>
+                <Style TargetType="{x:Type TextBlock}">
+                    <Setter Property="Margin" Value="0, 20, 0, 0"/>
+                </Style>
+            </StackPanel.Resources>
+            <TextBox Name="tbxCustName"/>
+            <TextBox Name="tbxCustPhone"/>
+            <TextBlock Name="tblkBookingDate"/>
+            <TextBlock Name="tblkCustomerCount"/>
+        </StackPanel>
+        <Button Grid.Column="1" Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Center" Content="Create Booking" Padding="20, 5, 20, 5" Click="Button_Click"/>
+    </Grid>
+</Window>

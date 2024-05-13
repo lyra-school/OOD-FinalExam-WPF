@@ -25,5 +25,14 @@ namespace OOD_FinalExam_WPF
         public Customer() { 
             Bookings = new List<Booking>();
         }
+
+        /// <summary>
+        /// Override used for formatting within a ListBox
+        /// </summary>
+        /// <returns>Formatted string</returns>
+        public override string ToString()
+        {
+            return $"{Name} {ContactNumber}";
+        }
     }
 }
