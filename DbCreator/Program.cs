@@ -23,9 +23,9 @@ namespace DbCreator
                 Customer c2 = new Customer() { Name = "Mary Smith", ContactNumber = "086 546 3214" };
                 Customer c3 = new Customer() { Name = "Jo Doyle", ContactNumber = "087 1221 222" };
 
-                Booking b1 = new Booking() { BookingsDate = DateTime.Now, NumberOfParticipants = 2 };
-                Booking b2 = new Booking() { BookingsDate = DateTime.Now, NumberOfParticipants = 3 };
-                Booking b3 = new Booking() { BookingsDate = DateTime.Now, NumberOfParticipants = 4 };
+                Booking b1 = new Booking() { BookingsDate = DateTime.Now.Date, NumberOfParticipants = 2 };
+                Booking b2 = new Booking() { BookingsDate = DateTime.Now.Date, NumberOfParticipants = 3 };
+                Booking b3 = new Booking() { BookingsDate = DateTime.Now.Date, NumberOfParticipants = 4 };
 
                 c1.Bookings.Add(b1);
                 c2.Bookings.Add(b2);

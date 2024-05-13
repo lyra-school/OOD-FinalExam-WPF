@@ -19,7 +19,7 @@
             <RowDefinition Height="2*"/>
         </Grid.RowDefinitions>
         <TextBlock Text="Booking Details" VerticalAlignment="Bottom" FontSize="24" Padding="10, 0, 0, 10"/>
-        <DatePicker Name="dpBooking" Grid.Column="1" VerticalAlignment="Bottom" Margin="0, 0, 0, 10"/>
+        <DatePicker Name="dpBooking" Grid.Column="1" VerticalAlignment="Bottom" Margin="0, 0, 0, 10" SelectedDateChanged="dpBooking_SelectedDateChanged"/>
         <TextBlock Text="New Booking" Grid.Column="3" VerticalAlignment="Bottom" FontSize="24" Padding="0, 0, 0, 10"/>
         <ListBox Name="lbxBooking" Grid.Row="1" Grid.ColumnSpan="3" Margin="10, 10, 10, 10"/>
         <StackPanel Grid.Column="3" Grid.Row="1" HorizontalAlignment="Center">
@@ -51,9 +51,9 @@
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="3*"/>
             </Grid.ColumnDefinitions>
-            <TextBlock Name="tblkCapacity" Grid.Row="1" VerticalAlignment="Center" Text="Capacity" Padding="10, 0, 0, 0"/>
-            <TextBlock Name="tblkBookings" Grid.Row="1" Grid.Column="1" VerticalAlignment="Center" Text="Bookings" Padding="10, 0, 0, 0"/>
-            <TextBlock Name="tblkAvailable" Grid.Row="1" Grid.Column="2" VerticalAlignment="Center" Text="Available" Padding="10, 0, 0, 0"/>
+            <TextBlock Name="tblkCapacity" Grid.Row="1" VerticalAlignment="Center" Text="Capacity 40" Padding="10, 0, 0, 0"/>
+            <TextBlock Name="tblkBookings" Grid.Row="1" Grid.Column="1" VerticalAlignment="Center" Text="Bookings 0" Padding="10, 0, 0, 0"/>
+            <TextBlock Name="tblkAvailable" Grid.Row="1" Grid.Column="2" VerticalAlignment="Center" Text="Available 40" Padding="10, 0, 0, 0"/>
             <Button Name="btnDelete" Grid.Column="3" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center" Content="Delete Booking" Padding="20, 0, 20, 0"/>
         </Grid>
     </Grid>

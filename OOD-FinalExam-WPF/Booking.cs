@@ -19,5 +19,14 @@ namespace OOD_FinalExam_WPF
         // Customer FK & connection
         public int CustomerId { get; set; }
         public virtual Customer Customer { get; set; }
+
+        /// <summary>
+        /// Override used for formatting within a ListBox
+        /// </summary>
+        /// <returns>Formatted string</returns>
+        public override string ToString()
+        {
+            return $"{Customer.Name} ({Customer.ContactNumber} - Party of {NumberOfParticipants})";
+        }
     }
 }
