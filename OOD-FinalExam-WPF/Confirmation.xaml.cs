@@ -24,6 +24,11 @@ namespace OOD_FinalExam_WPF
             InitializeComponent();
         }
 
+        /// <summary>
+        /// Close window
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
