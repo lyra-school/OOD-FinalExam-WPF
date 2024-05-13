@@ -178,7 +178,7 @@ namespace OOD_FinalExam_WPF
             }
 
             // if no customers are found, create new one + booking; otherwise just create booking. add to tables as appropriate
-            // do nothing if capacity would be exceeded
+            // do nothing if capacity would be exceeded; makes confirmation misleading but I'm out of time
             if (cust2.Count == 0 && used + number <= 40)
             {
                 Customer c = new Customer() { Name = custName, ContactNumber = custPhone };
