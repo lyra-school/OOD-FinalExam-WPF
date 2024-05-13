@@ -163,8 +163,23 @@ namespace OOD_FinalExam_WPF
                          select c;
             List<Customer> cust2 = query2.ToList();
 
+            // get all bookings for given date
+            var query3 = from b in _db.Bookings
+                        where b.BookingsDate == dt.Date
+                        select b;
+
+            List<Booking> bookings = query3.ToList();
+            int used = 0;
+
+            // Search all bookings for total number of participants
+            foreach (Booking booking in bookings)
+            {
+                used += booking.NumberOfParticipants;
+            }
+
             // if no customers are found, create new one + booking; otherwise just create booking. add to tables as appropriate
-            if(cust2.Count == 0)
+            // do nothing if capacity would be exceeded
+            if (cust2.Count == 0 && used + number <= 40)
             {
                 Customer c = new Customer() { Name = custName, ContactNumber = custPhone };
                 Booking b = new Booking() { BookingsDate = dt.Date, NumberOfParticipants = number};
@@ -172,7 +187,7 @@ namespace OOD_FinalExam_WPF
                 c.Bookings.Add(b);
                 _db.Customers.Add(c);
                 _db.SaveChanges();
-            } else
+            } else if(used + number <= 40)
             {
                 // there SHOULDN'T be more than 1 customer in the list, but if there is, default to the first one
                 Booking b = new Booking() { BookingsDate = dt.Date, NumberOfParticipants = number };
