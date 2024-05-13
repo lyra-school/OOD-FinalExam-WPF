@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:OOD_FinalExam_WPF"
         mc:Ignorable="d"
-        Title="Confirmation" Height="100" Width="150">
+        Title="Confirmation" Height="100" Width="150" WindowStartupLocation="CenterOwner">
     <Grid>
         <TextBlock HorizontalAlignment="Left" Margin="22,21,0,0" TextWrapping="Wrap" Text="Booking Created" VerticalAlignment="Top"/>
         <Button Content="OK" HorizontalAlignment="Center" Margin="0,42,0,0" VerticalAlignment="Top" Click="Button_Click"/>
