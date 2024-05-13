@@ -9,11 +9,16 @@ namespace DbCreator
 {
     internal class Program
     {
+        /// <summary>
+        /// Program used to populate DB with sample data
+        /// </summary>
+        /// <param name="args"></param>
         static void Main(string[] args)
         {
             RestaurantData restaurantData = new RestaurantData("OODExam_LyraKarsaj");
             using(restaurantData)
             {
+                // Populate customer data, then respective bookings, then add to DB and and save changes
                 Customer c1 = new Customer() { Name = "Tom Jones", ContactNumber = "086-123 4567" };
                 Customer c2 = new Customer() { Name = "Mary Smith", ContactNumber = "086 546 3214" };
                 Customer c3 = new Customer() { Name = "Jo Doyle", ContactNumber = "087 1221 222" };
