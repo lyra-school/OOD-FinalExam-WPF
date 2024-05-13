@@ -105,8 +105,14 @@ namespace OOD_FinalExam_WPF
             tbxContact.Text = "";
         }
 
+        /// <summary>
+        /// Adds a booking using another booking window
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnSearch_Click(object sender, RoutedEventArgs e)
         {
+            // do nothing if one of the textboxes is blank/invalid
             int number;
             bool parsed = int.TryParse(tbxNoOfCustomers.Text, out number);
             if(tbxName.Text == "" || tbxContact.Text == "" || tbxNoOfCustomers.Text == "" || parsed == false || dpSearch.SelectedDate == null)
@@ -117,11 +123,13 @@ namespace OOD_FinalExam_WPF
             DateTime dt = (DateTime)dpSearch.SelectedDate;
             CustomerSearchResults selectionWin = new CustomerSearchResults();
 
+            // update child window display with entered data
             selectionWin.tblkBookingDate.Text = $"Date of booking - {dt.Day}/{dt.Month}/{dt.Year}";
             selectionWin.tblkCustomerCount.Text = $"Numbers of customers - {number}";
             selectionWin.tbxCustName.Text = tbxName.Text;
             selectionWin.tbxCustPhone.Text = tbxContact.Text;
 
+            // get all customers and match them against the entered name; match found = part of child window display
             Regex reg = new Regex(tbxName.Text, RegexOptions.IgnoreCase);
 
             var query = from c in _db.Customers
@@ -141,17 +149,21 @@ namespace OOD_FinalExam_WPF
             }
             selectionWin.lbxMatches.ItemsSource = matchingCust;
 
+            // open window; method waits until it's closed
             selectionWin.ShowDialog();
 
+            // get current data from child window
             string custName = selectionWin.tbxCustName.Text;
             string custPhone = selectionWin.tbxCustPhone.Text;
 
+            // try to find customer with exact customer name and phone
             var query2 = from c in _db.Customers
                          where (c.Name == custName) &&
                          (c.ContactNumber == custPhone)
                          select c;
             List<Customer> cust2 = query2.ToList();
 
+            // if no customers are found, create new one + booking; otherwise just create booking. add to tables as appropriate
             if(cust2.Count == 0)
             {
                 Customer c = new Customer() { Name = custName, ContactNumber = custPhone };
@@ -162,10 +174,43 @@ namespace OOD_FinalExam_WPF
                 _db.SaveChanges();
             } else
             {
+                // there SHOULDN'T be more than 1 customer in the list, but if there is, default to the first one
                 Booking b = new Booking() { BookingsDate = dt.Date, NumberOfParticipants = number };
                 cust2[0].Bookings.Add(b);
                 _db.SaveChanges();
             }
+        }
+
+        /// <summary>
+        /// Deletes selected booking
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnDelete_Click(object sender, RoutedEventArgs e)
+        {
+            // if nothing selected, do nothing
+            if(lbxBooking.SelectedItem == null)
+            {
+                return;
+            }
+
+            // get target booking, terminate selection and generate new list excluding it
+            Booking targetBooking = (Booking)lbxBooking.SelectedItem;
+            lbxBooking.SelectedItem = null;
+            DateTime dt = (DateTime)dpBooking.SelectedDate;
+            var query = from b in _db.Bookings
+                        where (b.BookingsDate == dt.Date) &&
+                        (b.BookingId != targetBooking.BookingId)
+                        select b;
+            List<Booking> bookings = query.ToList();
+
+            // update window before deleting the booking
+            lbxBooking.ItemsSource = bookings;
+            CapacityUpdater(bookings);
+
+            // delete booking and save
+            _db.Bookings.Remove(targetBooking);
+            _db.SaveChanges();
         }
     }
 }

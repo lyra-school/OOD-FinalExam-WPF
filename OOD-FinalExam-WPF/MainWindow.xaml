@@ -54,7 +54,7 @@
             <TextBlock Name="tblkCapacity" Grid.Row="1" VerticalAlignment="Center" Text="Capacity 40" Padding="10, 0, 0, 0"/>
             <TextBlock Name="tblkBookings" Grid.Row="1" Grid.Column="1" VerticalAlignment="Center" Text="Bookings 0" Padding="10, 0, 0, 0"/>
             <TextBlock Name="tblkAvailable" Grid.Row="1" Grid.Column="2" VerticalAlignment="Center" Text="Available 40" Padding="10, 0, 0, 0"/>
-            <Button Name="btnDelete" Grid.Column="3" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center" Content="Delete Booking" Padding="20, 0, 20, 0"/>
+            <Button Name="btnDelete" Grid.Column="3" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center" Content="Delete Booking" Padding="20, 0, 20, 0" Click="btnDelete_Click"/>
         </Grid>
     </Grid>
 </Window>
