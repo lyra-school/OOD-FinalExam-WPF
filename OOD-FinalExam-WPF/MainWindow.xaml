@@ -5,8 +5,56 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:OOD_FinalExam_WPF"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="Restaurant App" Height="450" Width="800">
     <Grid>
-        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="3*"/>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="4*"/>
+            <ColumnDefinition Width="3*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="5*"/>
+            <RowDefinition Height="2*"/>
+        </Grid.RowDefinitions>
+        <TextBlock Text="Booking Details" VerticalAlignment="Bottom" FontSize="24" Padding="10, 0, 0, 10"/>
+        <DatePicker Name="dpBooking" Grid.Column="1" VerticalAlignment="Bottom" Margin="0, 0, 0, 10"/>
+        <TextBlock Text="New Booking" Grid.Column="3" VerticalAlignment="Bottom" FontSize="24" Padding="0, 0, 0, 10"/>
+        <ListBox Name="lbxBooking" Grid.Row="1" Grid.ColumnSpan="3" Margin="10, 10, 10, 10"/>
+        <StackPanel Grid.Column="3" Grid.Row="1" HorizontalAlignment="Center">
+            <StackPanel.Resources>
+                <Style TargetType="{x:Type TextBox}">
+                    <Setter Property="Margin" Value="0, 20, 0, 0"/>
+                </Style>
+                <Style TargetType="{x:Type DatePicker}">
+                    <Setter Property="Margin" Value="0, 20, 0, 0"/>
+                </Style>
+                <Style TargetType="{x:Type Button}">
+                    <Setter Property="Margin" Value="0, 20, 0, 0"/>
+                </Style>
+            </StackPanel.Resources>
+            <DatePicker Name="dpSearch"/>
+            <TextBox Name="tbxNoOfCustomers" Text="Number of customers"/>
+            <TextBox Name="tbxName" Text="Customer Name"/>
+            <TextBox Name="tbxContact" Text="Contact Number"/>
+            <Button Name="btnSearch" Content="Customer Search"/>
+        </StackPanel>
+        <Grid Grid.Row="2" Grid.ColumnSpan="3">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="3*"/>
+            </Grid.ColumnDefinitions>
+            <TextBlock Name="tblkCapacity" Grid.Row="1" VerticalAlignment="Center" Text="Capacity" Padding="10, 0, 0, 0"/>
+            <TextBlock Name="tblkBookings" Grid.Row="1" Grid.Column="1" VerticalAlignment="Center" Text="Bookings" Padding="10, 0, 0, 0"/>
+            <TextBlock Name="tblkAvailable" Grid.Row="1" Grid.Column="2" VerticalAlignment="Center" Text="Available" Padding="10, 0, 0, 0"/>
+            <Button Name="btnDelete" Grid.Column="3" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center" Content="Delete Booking" Padding="20, 0, 20, 0"/>
+        </Grid>
     </Grid>
 </Window>
